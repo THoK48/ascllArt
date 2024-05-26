@@ -10,14 +10,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class text {
+public class Main {
 
     public static int getT(String ch) {
 
         Canvas c = new Canvas() {
             public void paint(Graphics g) {
                 g.setColor(Color.BLACK);
-                g.drawString(ch, 16, 16);
+                g.drawString(ch, 32, 32);
             }
         };
 
@@ -34,7 +34,7 @@ public class text {
 
             }
         }
-
+        System.out.println();
         return output;
 
     }
@@ -44,7 +44,7 @@ public class text {
 
         String[] chars = new String[1024];
 
-        for (int i = '가'; i < '힣'; i++) {
+        for (int i = '가'; i < '?'; i++) {
             int k = getT(String.valueOf((char) i));
             chars[k] = String.valueOf((char) i);
         }
@@ -68,8 +68,8 @@ public class text {
 
     static String[] strings = { "  ", "  ", "..", "..", "``", "``", "--", "--", ";;", ";;", ";;", ";;", "\"\"",
             "\"\"", "__", "__", "ii", "ii", "rr", "rr", "jj", "스", "}}", "수", "vv", "슈", "xx", "즈", "yy", "주", "zz",
-            "UU", "uu", "추", "kk", "mm", "hh", "HH", "KK", "ww", "qq", "NN", "99", "DD", "SS", "힑", "gg", "힗", "RR",
-            "힓", "$$", "흏", "힖", "힅", "BB", "MM", "##", "흺", "휊", "흂", "퓶", "풾", "@@", "쀒", "뽧", "뾢", "뾾", "뽪" };
+            "UU", "uu", "추", "kk", "mm", "hh", "HH", "KK", "ww", "qq", "NN", "99", "DD", "SS", "?", "gg", "?", "RR",
+            "?", "$$", "?", "?", "?", "BB", "MM", "##", "?", "?", "?", "?", "?", "@@", "?", "?", "?", "?", "?" };
 
     public static String getString(double d) {
         int k = (int) (67 - (67 / 255.0) * d);
@@ -79,10 +79,10 @@ public class text {
 
     public static void a () throws IOException {
 
-        BufferedImage im = ImageIO.read(new File("C:\\Users\\308\\Desktop\\���̟�\\download.jpg"));
+        BufferedImage im = ImageIO.read(new File("C:\\Users\\taeho\\OneDrive\\바탕 화면\\공부한거\\imageTest\\frames\\frame_0001.jpg"));
 
 
-        int size = 1;
+        int size = 4;
         double[][] map = new double[im.getHeight() / size - 1][im.getWidth() / size - 1];
         {
 
@@ -112,7 +112,9 @@ public class text {
                 }
             }
         }
-        FileWriter fw = new FileWriter(new File("C:\\Users\\308\\Desktop\\���̟�\\������.txt"));
+        String filePath = "C:\\Users\\taeho\\OneDrive\\바탕 화면\\공부한거\\imageTest\\출력.txt";
+        FileWriter fw = new FileWriter(new File(filePath));
+
 
         for(String[] chars:convert)
         {
@@ -121,6 +123,9 @@ public class text {
             }
             fw.write("\r\n");
         }fw.close();
+
+        Runtime.getRuntime().exec("notepad \""+filePath+ "\"");
+
     }
 
     public static void main(String[] args) throws IOException {
